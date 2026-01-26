@@ -11,7 +11,7 @@
         :root {
             --primary: #ff4d6d;
             --secondary: #ff8fa3;
-            --bg-gradient: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+            --bg-gradient: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffd1ff, #a1887f);
         }
 
         * { box-sizing: border-box; }
@@ -19,7 +19,7 @@
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
-            background-image: var(--bg-gradient);
+            background: var(--bg-gradient);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             min-height: 100vh;
@@ -36,52 +36,48 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Glassmorphism Card */
         .container {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             width: 90%;
             max-width: 400px;
             border-radius: 24px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.7);
             text-align: center;
             position: relative;
             z-index: 10;
             overflow: hidden;
-            animation: popIn 0.8s ease-out;
+            animation: popIn 1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
         }
 
         @keyframes popIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .header {
-            padding: 25px 20px 15px;
-            background: rgba(255, 255, 255, 0.3);
-        }
-
+        .header { padding: 30px 20px 10px; }
         .header h1 {
             font-family: 'Great Vibes', cursive;
             color: var(--primary);
-            font-size: 36px;
+            font-size: 40px;
             margin: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
         }
 
         .header p {
-            font-size: 11px;
+            font-size: 10px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 5px 0;
-            color: #777;
+            letter-spacing: 3px;
+            margin: 0;
+            color: #888;
         }
 
         .names {
             font-weight: 600;
-            font-size: 16px;
-            margin-top: 5px;
+            font-size: 18px;
+            margin: 10px 0;
             color: #333;
         }
 
@@ -89,135 +85,107 @@
             display: inline-block;
             background: var(--primary);
             color: white;
-            padding: 3px 12px;
+            padding: 4px 15px;
             border-radius: 20px;
             font-size: 11px;
-            margin-top: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
         }
 
-        /* Slider - Centering Fixed Here */
-        .slider-wrapper {
-            position: relative;
-            width: 100%;
-            padding: 10px;
-        }
-
-        .slider-window {
-            overflow: hidden;
-            border-radius: 15px;
-            background: #fff; /* Image ke peeche white background */
-        }
-
-        .slides {
-            display: flex;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .slide {
-            min-width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: #fff;
-        }
+        .slider-wrapper { position: relative; width: 100%; padding: 15px; }
+        .slider-window { overflow: hidden; border-radius: 18px; background: #fff; box-shadow: inset 0 0 10px rgba(0,0,0,0.05); }
+        .slides { display: flex; transition: transform 0.7s cubic-bezier(0.645, 0.045, 0.355, 1); }
+        .slide { min-width: 100%; display: flex; flex-direction: column; background: #fff; }
 
         .slide img {
             width: 100%;
-            height: 320px; /* Fixed height */
-            object-fit: contain; /* Photo puri dikhegi, kategi nahi */
+            height: 350px; 
+            object-fit: cover;
             background-color: #f9f9f9;
         }
 
         .caption {
-            width: 100%;
-            padding: 15px;
+            padding: 20px 15px;
             font-size: 14px;
             color: #555;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.5;
             font-style: italic;
-            background: #fff;
         }
 
-        /* Navigation */
         .nav-btn {
             position: absolute;
             top: 45%;
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             border: none;
-            width: 35px;
-            height: 35px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             color: var(--primary);
-            font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            z-index: 11;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 12;
+            transition: 0.3s;
         }
+        .nav-btn:hover { background: var(--primary); color: white; }
+        .prev { left: 5px; }
+        .next { right: 5px; }
 
-        .prev { left: 20px; }
-        .next { right: 20px; }
-
-        .footer {
-            padding: 15px;
-            font-size: 12px;
-            color: #888;
-        }
-
+        .footer { padding: 15px; font-size: 11px; color: #aaa; }
         .footer b { color: var(--primary); }
 
-        /* Floating Hearts */
         .heart {
             position: fixed;
             bottom: -20px;
-            font-size: 20px;
             animation: floatUp 6s linear infinite;
             z-index: 1;
-            opacity: 0.6;
+            opacity: 0.5;
         }
 
         @keyframes floatUp {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.7; }
             100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
         }
 
-        /* Music Floating Button */
         .music-btn {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 50px;
-            height: 50px;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
             background: #fff;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             cursor: pointer;
             z-index: 100;
             border: 2px solid var(--primary);
-            font-size: 22px;
         }
 
-        .rotating { animation: rotate 3s linear infinite; }
+        .rotating { animation: rotate 4s linear infinite; }
         @keyframes rotate { 100% { transform: rotate(360deg); } }
-
     </style>
 </head>
 <body>
 
     <div class="container">
         <div class="header">
-            <p>2 Years of Togetherness</p>
-            <h1>Happy Anniversary</h1>
-            <div class="names">Manan Shah & Kriya Shah</div>
-            <div class="badge">02 • FEB</div>
+            <p>Happy 2nd Anniversary</p>
+            <h1>Forever To Go</h1>
+            <div class="names">Manan & Kriya</div>
+            <div class="badge">02 • FEB • 2026</div>
         </div>
 
         <div class="slider-wrapper">
-            <button class="nav-btn prev" onclick="moveSlide(-1)">❮</button>
-            <button class="nav-btn next" onclick="moveSlide(1)">❯</button>
+            <button class="nav-btn prev" onclick="manualMove(-1)">❮</button>
+            <button class="nav-btn next" onclick="manualMove(1)">❯</button>
             
             <div class="slider-window" id="slider-window">
                 <div class="slides" id="slides">
@@ -235,35 +203,33 @@
                     </div>
                     <div class="slide">
                         <img src="photo4.jpg" alt="Memory 4">
-                        <div class="caption">Two years of being the reason behind this smile. I’m the luckiest. 💕</div>
+                        <div class="caption">Two years of being the reason behind this smile. 💕</div>
                     </div>
                     <div class="slide">
                         <img src="photo5.jpg" alt="Memory 5">
-                        <div class="caption">Lost the game, won the girl. I’d call that a fair trade! 😉</div>
+                        <div class="caption">Lost the game, won the girl. A fair trade! 😉</div>
                     </div>
                     <div class="slide">
                         <img src="photo6.jpg" alt="Memory 6">
-                        <div class="caption">From 'I Do' to 'Sawasdee'—exploring paradise with my forever partner. 🌴✨</div>
+                        <div class="caption">From 'I Do' to 'Sawasdee'—exploring Thailand. 🌴</div>
                     </div>
                     <div class="slide">
                         <img src="photo7.jpg" alt="Memory 7">
-                        <div class="caption">Whether on the badminton court or in life, we always win together. So proud of my champion wife! 🏸🏆</div>
+                        <div class="caption">Always winning together. Proud of my champion wife! 🏸🏆</div>
                     </div>
                     <div class="slide">
                         <img src="photo8.jpg" alt="Memory 8">
-                        <div class="caption">The painting might not be perfect, but the person I'm painting with certainly is. 🎨</div>
+                        <div class="caption">The painting isn't perfect, but the partner is. 🎨</div>
                     </div>
                     <div class="slide">
                         <img src="photo9.jpg" alt="Memory 9">
-                        <div class="caption">Looking back at the moment we decided to be 'Us'—it truly was the golden time of my life. 💕</div>
+                        <div class="caption">The moment we decided on 'Us' was golden. ✨</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="footer">
-            Made with <b>Love</b> for My Better Half
-        </div>
+        <div class="footer">Made with <b>Love</b> for My Better Half</div>
     </div>
 
     <div class="music-btn" onclick="toggleMusic()" id="music-btn">
@@ -283,54 +249,44 @@
         const musicIcon = document.getElementById('music-icon');
         let isPlaying = false;
 
-        // Slider Function
         function moveSlide(step) {
             index = (index + step + totalSlides) % totalSlides;
             slides.style.transform = `translateX(-${index * 100}%)`;
         }
 
-        // Auto slide every 5 seconds
+        function manualMove(step) {
+            clearInterval(autoPlay);
+            moveSlide(step);
+            autoPlay = setInterval(() => moveSlide(1), 5000); 
+        }
+
         let autoPlay = setInterval(() => moveSlide(1), 5000);
 
-        // Music Toggle
         function toggleMusic() {
             if (isPlaying) {
                 music.pause();
                 musicIcon.innerText = "🎵";
                 musicBtn.classList.remove('rotating');
             } else {
-                music.play();
+                music.play().catch(e => console.log("Audio play blocked."));
                 musicIcon.innerText = "⏸";
                 musicBtn.classList.add('rotating');
             }
             isPlaying = !isPlaying;
         }
 
-        // Swipe Support for Mobile
-        let touchStartX = 0;
-        document.getElementById('slider-window').addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-        document.getElementById('slider-window').addEventListener('touchend', e => {
-            let touchEndX = e.changedTouches[0].screenX;
-            if (touchStartX - touchEndX > 50) moveSlide(1);
-            if (touchEndX - touchStartX > 50) moveSlide(-1);
-            clearInterval(autoPlay); // Stop auto-play on manual swipe
-        });
-
-        // Floating Hearts Animation
         function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerHTML = "❤️";
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 6000);
+            const symbols = ["❤️", "💖", "✨", "🌸"];
+            const el = document.createElement('div');
+            el.classList.add('heart');
+            el.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+            el.style.left = Math.random() * 100 + "vw";
+            el.style.fontSize = (Math.random() * 10 + 15) + "px";
+            el.style.animationDuration = (Math.random() * 3 + 4) + "s";
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 6000);
         }
-        setInterval(createHeart, 600);
+        setInterval(createHeart, 400);
     </script>
 </body>
-
 </html>
-

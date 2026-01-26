@@ -3,252 +3,345 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy 2nd Anniversary ❤️</title>
+<title>Happy Anniversary Manan & Kriya</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow-x: hidden;
-}
+    :root {
+        --primary: #ff4d6d;
+        --secondary: #ff8fa3;
+        --bg-gradient: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+    }
 
-.container {
-    background: #fff;
-    width: 92%;
-    max-width: 400px;
-    border-radius: 18px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-    overflow: hidden;
-    text-align: center;
-    position: relative;
-    z-index: 2;
-}
+    * { box-sizing: border-box; }
 
-.header {
-    padding: 18px;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    color: #fff;
-}
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background-image: var(--bg-gradient);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        color: #444;
+    }
 
-.header h1 {
-    margin: 0;
-    font-size: 22px;
-}
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
 
-.header p {
-    margin: 6px 0;
-    font-size: 13px;
-}
+    /* Glassmorphism Card */
+    .container {
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        width: 90%;
+        max-width: 380px;
+        border-radius: 24px;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        text-align: center;
+        position: relative;
+        z-index: 10;
+        overflow: hidden;
+        animation: popIn 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+        opacity: 0;
+        transform: translateY(20px);
+    }
 
-.names {
-    font-weight: bold;
-    font-size: 14px;
-}
+    @keyframes popIn {
+        to { opacity: 1; transform: translateY(0); }
+    }
 
-.date {
-    font-size: 12px;
-    opacity: 0.9;
-}
+    .header {
+        padding: 20px 20px 10px;
+    }
 
-.slider {
-    position: relative;
-    overflow: hidden;
-}
+    .header h1 {
+        font-family: 'Great Vibes', cursive;
+        color: var(--primary);
+        font-size: 38px;
+        margin: 0;
+        line-height: 1.2;
+    }
 
-.slides {
-    display: flex;
-    transition: transform 0.6s ease;
-}
+    .header p {
+        font-size: 12px;
+        color: #666;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
 
-.slide {
-    min-width: 100%;
-    padding: 14px;
-}
+    .couple-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: 5px;
+        font-weight: 600;
+        font-size: 14px;
+    }
 
-.slide img {
-    width: 100%;
-    height: 240px;
-    object-fit: cover;
-    border-radius: 14px;
-}
+    .badge {
+        background: var(--primary);
+        color: white;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
 
-.caption {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #444;
-}
+    /* Slider Styles */
+    .slider-wrapper {
+        width: 100%;
+        padding: 10px 15px;
+        position: relative;
+    }
 
-.nav {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-}
+    .slider-window {
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        position: relative;
+    }
 
-.nav button {
-    background: rgba(255,255,255,0.85);
-    border: none;
-    font-size: 20px;
-    padding: 6px 12px;
-    border-radius: 50%;
-}
+    .slides {
+        display: flex;
+        transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    }
 
-.footer {
-    padding: 12px;
-    font-size: 13px;
-    color: #666;
-}
+    .slide {
+        min-width: 100%;
+        position: relative;
+    }
 
-.footer span {
-    color: #ff4d6d;
-    font-weight: bold;
-}
+    .slide img {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+        display: block;
+    }
 
-/* hearts */
-.heart {
-    position: fixed;
-    bottom: -20px;
-    font-size: 18px;
-    animation: float 5s linear infinite;
-    opacity: 0.7;
-}
+    .caption {
+        background: white;
+        padding: 12px;
+        font-size: 13px;
+        color: #555;
+    }
 
-@keyframes float {
-    from { transform: translateY(0); }
-    to { transform: translateY(-110vh); }
-}
+    /* Navigation Buttons */
+    .nav-btn {
+        position: absolute;
+        top: 40%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.8);
+        border: none;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        cursor: pointer;
+        color: var(--primary);
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transition: 0.2s;
+        z-index: 5;
+    }
 
-.tap-note {
-    position: fixed;
-    bottom: 10px;
-    color: #fff;
-    font-size: 12px;
-}
+    .nav-btn:hover {
+        background: white;
+        transform: translateY(-50%) scale(1.1);
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    /* Footer */
+    .footer {
+        padding: 15px;
+        font-size: 11px;
+        color: #888;
+    }
+    
+    .footer span { color: var(--primary); }
+
+    /* Floating Music Button */
+    .music-control {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        background: white;
+        border-radius: 50%;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 100;
+        font-size: 20px;
+        border: 2px solid var(--primary);
+    }
+
+    .music-anim {
+        animation: spin 3s linear infinite;
+    }
+
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    /* Flying Hearts */
+    .heart {
+        position: absolute;
+        bottom: -20px;
+        font-size: 20px;
+        color: rgba(255, 77, 109, 0.6);
+        animation: floatUp 6s linear infinite;
+        z-index: 1;
+        user-select: none;
+    }
+
+    @keyframes floatUp {
+        0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+        100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+    }
+
 </style>
 </head>
+<body>
 
-<body onclick="startMusic()">
-
-<div class="container">
-
-    <div class="header">
-        <h1>Happy 2nd Anniversary 💍</h1>
-        <p>Two years of love & togetherness</p>
-        <div class="names">Manan Shah & Kriya Shah</div>
-        <div class="date">02 • FEB</div>
-    </div>
-
-    <div class="slider">
-        <div class="slides" id="slides">
-
-            <div class="slide">
-                <img src="photo1.jpg">
-                <div class="caption">Our love story keeps getting better ❤️</div>
+    <div class="container">
+        <div class="header">
+            <p>Celebrating 2 Years</p>
+            <h1>Happy Anniversary</h1>
+            <div class="couple-info">
+                Manan & Kriya
+                <span class="badge">02 • FEB</span>
             </div>
-            <div class="slide">
-                <img src="photo2.jpg">
-                <div class="caption">Forever feels perfect with you 💕</div>
-            </div>
-            <div class="slide">
-                <img src="photo3.jpg">
-                <div class="caption">My favorite place is next to you ✨</div>
-            </div>
-            <div class="slide">
-                <img src="photo4.jpg">
-                <div class="caption">Still choosing you every day 💍</div>
-            </div>
-            <div class="slide">
-                <img src="photo5.jpg">
-                <div class="caption">Two hearts, one journey 🏡</div>
-            </div>
-            <div class="slide">
-                <img src="photo6.jpg">
-                <div class="caption">Thank you for being my forever 💖</div>
-            </div>
-            <div class="slide">
-                <img src="photo7.jpg">
-                <div class="caption">Laughing through life together 😄</div>
-            </div>
-            <div class="slide">
-                <img src="photo8.jpg">
-                <div class="caption">You are my always 🌸</div>
-            </div>
-            <div class="slide">
-                <img src="photo9.jpg">
-                <div class="caption">Love grows stronger every year ❤️</div>
-            </div>
-            <div class="slide">
-                <img src="photo10.jpg">
-                <div class="caption">Happy Anniversary, my love 🎉</div>
-            </div>
-
         </div>
 
-        <div class="nav">
-            <button onclick="prev()">❮</button>
-            <button onclick="next()">❯</button>
+        <div class="slider-wrapper">
+            <button class="nav-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="nav-btn next" onclick="moveSlide(1)">&#10095;</button>
+            
+            <div class="slider-window" id="slider-window">
+                <div class="slides" id="slides">
+                    <div class="slide"><img src="https://placehold.co/400x500/ffdde1/ff4d6d?text=Photo+1" alt="Memory"><div class="caption">Our love story keeps getting better ❤️</div></div>
+                    <div class="slide"><img src="https://placehold.co/400x500/ffdde1/ff4d6d?text=Photo+2" alt="Memory"><div class="caption">Forever feels perfect with you 💕</div></div>
+                    <div class="slide"><img src="https://placehold.co/400x500/ffdde1/ff4d6d?text=Photo+3" alt="Memory"><div class="caption">My favorite place is next to you ✨</div></div>
+                    <div class="slide"><img src="https://placehold.co/400x500/ffdde1/ff4d6d?text=Photo+4" alt="Memory"><div class="caption">Still choosing you every day 💍</div></div>
+                    <div class="slide"><img src="https://placehold.co/400x500/ffdde1/ff4d6d?text=Photo+5" alt="Memory"><div class="caption">Laughing through life together 😄</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Made with ❤️ for my better half
         </div>
     </div>
 
-    <div class="footer">
-        Made with <span>Love</span> 💕
+    <div class="music-control" onclick="toggleMusic()">
+        <span id="music-icon">🎵</span>
     </div>
-</div>
 
-<div class="tap-note">Tap anywhere for music 🎶</div>
-
-<audio id="music" loop>
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
 
 <script>
-let index = 0;
-const slides = document.getElementById("slides");
-const total = slides.children.length;
+    // --- Slider Logic ---
+    let index = 0;
+    const slides = document.getElementById('slides');
+    const totalSlides = document.querySelectorAll('.slide').length;
+    let autoPlayInterval;
 
-function show() {
-    slides.style.transform = `translateX(-${index * 100}%)`;
-}
-
-function next() {
-    index = (index + 1) % total;
-    show();
-}
-
-function prev() {
-    index = (index - 1 + total) % total;
-    show();
-}
-
-setInterval(next, 4500);
-
-// music
-let started = false;
-function startMusic() {
-    if (!started) {
-        document.getElementById("music").play();
-        started = true;
-        document.querySelector(".tap-note").style.display = "none";
+    function updateSlider() {
+        slides.style.transform = `translateX(-${index * 100}%)`;
     }
-}
 
-// hearts
-setInterval(() => {
-    const h = document.createElement("div");
-    h.className = "heart";
-    h.innerHTML = "❤️";
-    h.style.left = Math.random() * 100 + "vw";
-    document.body.appendChild(h);
-    setTimeout(() => h.remove(), 5000);
-}, 700);
+    function moveSlide(step) {
+        index = (index + step + totalSlides) % totalSlides;
+        updateSlider();
+        resetTimer();
+    }
+
+    function resetTimer() {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = setInterval(() => moveSlide(1), 4000);
+    }
+
+    // Initialize AutoPlay
+    resetTimer();
+
+    // --- Touch/Swipe Support (Mobile UX) ---
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const sliderWindow = document.getElementById('slider-window');
+
+    sliderWindow.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    sliderWindow.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        if (touchEndX < touchStartX - 50) moveSlide(1); // Swipe Left
+        if (touchEndX > touchStartX + 50) moveSlide(-1); // Swipe Right
+    }
+
+    // --- Music Logic ---
+    const music = document.getElementById('bg-music');
+    const musicIcon = document.getElementById('music-icon');
+    let isPlaying = false;
+
+    function toggleMusic() {
+        if (isPlaying) {
+            music.pause();
+            musicIcon.innerText = "🎵";
+            musicIcon.parentElement.classList.remove('music-anim');
+        } else {
+            music.play();
+            musicIcon.innerText = "⏸";
+            musicIcon.parentElement.classList.add('music-anim');
+        }
+        isPlaying = !isPlaying;
+    }
+
+    // --- Floating Hearts Logic ---
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerText = Math.random() > 0.5 ? "❤️" : "💕"; // Randomize icon
+        
+        // Random Position & Size
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 20 + 10 + "px";
+        
+        // Random Animation Speed
+        heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+        
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 7000);
+    }
+
+    setInterval(createHeart, 500);
+
 </script>
-
 </body>
 </html>
